@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es" data-tema="claro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>El ahorcado</title>
+  <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+  <div class="app">
+
+    <!-- Menú lateral -->
+    <aside class="menu">
+      <h1 class="menu-titulo">El ahorcado</h1>
+
+      <p class="grupo">Juego</p>
+      <button id="btn-nueva" class="boton primario" type="button">Nueva palabra</button>
+
+      <p class="grupo">Puntaje</p>
+      <button id="btn-pdf" class="boton" type="button">Descargar PDF</button>
+
+      <div class="menu-fin">
+        <button id="btn-tema" class="boton" type="button">Modo oscuro</button>
+      </div>
+    </aside>
+
+    <!-- Contenido: partida a la izquierda, tabla de posiciones a la derecha -->
+    <main class="contenido">
+
+      <section class="tarjeta">
+        <h2>Partida</h2>
+        <p id="pista" class="pista">Pista: cargando...</p>
+
+        <svg class="dibujo" viewBox="0 0 200 220" role="img" aria-label="Dibujo del ahorcado">
+          <line class="soporte" x1="30" y1="205" x2="130" y2="205"/>
+          <line class="soporte" x1="60" y1="205" x2="60" y2="20"/>
+          <line class="soporte" x1="60" y1="20" x2="150" y2="20"/>
+          <line class="soporte" x1="150" y1="20" x2="150" y2="42"/>
+          <circle class="parte" cx="150" cy="60" r="18"/>
+          <line class="parte" x1="150" y1="78" x2="150" y2="140"/>
+          <line class="parte" x1="150" y1="95" x2="125" y2="120"/>
+          <line class="parte" x1="150" y1="95" x2="175" y2="120"/>
+          <line class="parte" x1="150" y1="140" x2="130" y2="180"/>
+          <line class="parte" x1="150" y1="140" x2="170" y2="180"/>
+        </svg>
+
+        <p id="palabra" class="palabra">_ _ _ _</p>
+
+        <p class="datos">
+          <span>Tiempo: <strong id="tiempo">0</strong> s</span>
+          <span>Errores: <strong id="errores">0 de 6</strong></span>
+        </p>
+
+        <div id="teclado" class="teclado"></div>
+
+        <div id="mensaje-juego" class="aviso oculto"></div>
+
+        <form id="form-guardar" class="form-guardar oculto" novalidate>
+          <p id="resumen-guardar" class="resumen"></p>
+          <label for="nombre">Tu nombre</label>
+          <input id="nombre" type="text" maxlength="20" placeholder="Por ejemplo: Ana" autocomplete="off">
+          <p id="error-nombre" class="error-texto"></p>
+          <button class="boton primario" type="submit">Guardar mi puntaje</button>
+        </form>
+      </section>
+
+      <section class="tarjeta">
+        <h2>Tabla de posiciones</h2>
+        <p class="ayuda">Los 10 mejores puntajes.</p>
+        <div class="tabla-caja">
+          <table class="ranking">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Puntos</th>
+                <th>Tiempo</th>
+                <th>Fecha</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="ranking-cuerpo"></tbody>
+          </table>
+        </div>
+        <p id="ranking-vacio" class="vacio">Todavía no hay puntajes guardados.</p>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Aviso que desaparece solo -->
+  <div id="toast" class="toast" role="status"></div>
+
+  <!-- Ventana propia de confirmación para borrar -->
+  <div id="modal" class="modal-fondo oculto">
+    <div class="modal-caja" role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
+      <h3 id="modal-titulo">¿Eliminar?</h3>
+      <p id="modal-texto">Esta acción no se puede deshacer.</p>
+      <div class="modal-botones">
+        <button id="modal-cancelar" class="boton" type="button">Cancelar</button>
+        <button id="modal-eliminar" class="boton peligro" type="button">Eliminar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/modules/script.js"></script>
+</body>
+</html>

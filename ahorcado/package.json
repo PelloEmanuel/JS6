@@ -1,0 +1,13 @@
+{
+  "name": "el-ahorcado",
+  "version": "1.0.0",
+  "description": "Juego del ahorcado con Express y MySQL",
+  "main": "modules/server.js",
+  "scripts": {
+    "start": "node modules/server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "mysql2": "^3.9.7"
+  }
+}
